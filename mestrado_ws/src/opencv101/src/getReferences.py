@@ -13,18 +13,13 @@ class referenceGetter(object):
 
   def __init__(self):
       rospy.Subscriber("/camera_params", imageParams, self.callback)
-      # mudar nome dos nós /parametros_de_controle/desvio_da_curvatura
-      # definir tipo da saída
-     # self.publisher = rospy.Publisher("/desvio_da_curvatura", desvioParams, queue_size = 10)
       self.publisher = rospy.Publisher("/desvio_da_curvatura", desvioParams, queue_size = 10)
 
   def callback(self, data):
-      # rospy.loginfo(rospy.get_caller_id() + "Posição relativa: %s", data.poseori)
       kde = 1100*2
       ktheta = 0.3978/3.75
       if data.poseori[0]>=320:
         de0 = math.sqrt((data.poseori[0]-320)*(data.poseori[0]-320)+(240-240)*(240-240))/kde
-        # quem é ktheta?
         thetae0 = ktheta*(0.69 - math.atan2(240,data.poseori[0]))
       else:
         de0 = -math.sqrt((data.poseori[0]-320)*(data.poseori[0]-320)+(240-240)*(240-240))/kde
