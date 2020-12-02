@@ -1,0 +1,10 @@
+<launch>
+	<arg name="robot_ip" default="192.168.131.1" />
+	<node pkg="usb_cam" type="usb_cam_node" name="usb_cam" args="_video_device:=/dev/video0 _pixel_format:=yuyv" if="$(eval robot_ip == '192.168.131.1')" />	
+	<node pkg="opencv101" type="opencv101_node" name="drawCircle" />
+	<node pkg="opencv101" type="getReferences.py" name="getReferences" />
+	<node pkg="topic_tools" type="throttle" name="throttle" args="messages desvio_da_curvatura 5.0"/>
+	<node pkg="opencv101" type="preditor.py" name="preditor" output="screen" />
+	<node pkg="opencv101" type="optimizerCaller" name="optimizerCaller" />
+
+</launch>

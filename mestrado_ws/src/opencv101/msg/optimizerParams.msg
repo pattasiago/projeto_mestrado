@@ -1,0 +1,9 @@
+Header header 
+float64[] Parameters
+float64[] x
+float64[] u 
+float64[] LFFClij
+float64[] LFFCpsiij
+float64[] LFFCbetaij
+float64[] LFFCgammaij
+float64[] optimizerResult
