@@ -63,6 +63,8 @@ void setImageParams(const cv::Mat &I){
 		circle(I, Point2f(mainCoordinates[k].x,mainCoordinates[k].y), 2, (0,0,255),2);
 	}
 	cv::flip(I,I,0);
+	cv::imshow("Image", I);
+	cv::waitKey(3);
 	
 	int i_coord = int(0.5f+mainCoordinates.size()/2)-1; //central coordinate
 
